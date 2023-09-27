@@ -1,0 +1,6 @@
+[submodule "freebsd/src"]
+	path = freebsd/src
+	url = git@github.com:Virus-V/freebsd-src.git
+[submodule "crochet"]
+	path = crochet
+	url = git@github.com:Virus-V/crochet.git
