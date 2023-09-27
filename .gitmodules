@@ -4,3 +4,6 @@
 [submodule "crochet"]
 	path = crochet
 	url = git@github.com:Virus-V/crochet.git
+[submodule "bl_mcu_sdk/toolchain"]
+	path = bl_mcu_sdk/toolchain
+	url = git@github.com:Virus-V/t-head-xuantie-gcc-freebsd.git

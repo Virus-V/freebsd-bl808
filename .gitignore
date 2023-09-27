@@ -53,3 +53,5 @@ Mkfile.old
 dkms.conf
 opensbi/install
 opensbi/build
+bl_mcu_sdk/build
+bl_mcu_sdk/out
