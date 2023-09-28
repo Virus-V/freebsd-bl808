@@ -85,13 +85,12 @@ SECTIONS
         __text_code_end__ = .;
     } > xip_memory
 
-    . = ALIGN(4);
-    __itcm_load_addr = .;
 
-    .itcm_region : AT (__itcm_load_addr)
+    .itcm_region :
     {
         . = ALIGN(4);
         __tcm_code_start__ = .;
+        PROVIDE (__itcm_load_addr = LOADADDR(.itcm_region));
 
         *(.tcm_code.*)
         *(.tcm_const.*)
@@ -109,21 +108,20 @@ SECTIONS
 
         . = ALIGN(4);
         __tcm_code_end__ = .;
-    } > itcm_memory
+    } > itcm_memory AT > xip_memory
 
-    __dtcm_load_addr = __itcm_load_addr + SIZEOF(.itcm_region);
-
-    .dtcm_region : AT (__dtcm_load_addr)
+    .dtcm_region :
     {
         . = ALIGN(4);
         __tcm_data_start__ = .;
+        PROVIDE (__dtcm_load_addr = LOADADDR(.dtcm_region));
 
         *(.tcm_data)
         /* *finger_print.o(.data*) */
 
         . = ALIGN(4);
         __tcm_data_end__ = .;
-    } > dtcm_memory
+    } > dtcm_memory AT > xip_memory
 
     /*************************************************************************/
     /* .stack_dummy section doesn't contains any symbols. It is only
@@ -146,18 +144,17 @@ SECTIONS
     ASSERT(__StackLimit >= __tcm_data_end__, "region RAM overflowed with stack")
     /*************************************************************************/
 
-    __system_ram_load_addr = __dtcm_load_addr + SIZEOF(.dtcm_region);
-
-    .system_ram_data_region : AT (__system_ram_load_addr)
+    .system_ram_data_region :
     {
         . = ALIGN(4);
         __system_ram_data_start__ = .;
+        PROVIDE(__system_ram_load_addr = LOADADDR(.system_ram_data_region));
 
         *(.system_ram)
 
         . = ALIGN(4);
         __system_ram_data_end__ = .;
-    } > ram_memory
+    } > ram_memory AT > xip_memory
 
     .system_ram_noinit_data_region (NOLOAD) :
     {
@@ -167,13 +164,12 @@ SECTIONS
         . = ALIGN(4);
     } > ram_memory
 
-    __ram_load_addr = __system_ram_load_addr + SIZEOF(.system_ram_data_region);
-
     /* Data section */
-    RAM_DATA : AT (__ram_load_addr)
+    RAM_DATA :
     {
         . = ALIGN(4);
         __ram_data_start__ = .;
+        PROVIDE(__ram_load_addr = LOADADDR(RAM_DATA));
 
         PROVIDE( __global_pointer$ = . + 0x800 );
 
@@ -186,10 +182,16 @@ SECTIONS
 
         . = ALIGN(4);
         __ram_data_end__ = .;
-    } > ram_memory
+    } > ram_memory AT > xip_memory
 
-    __etext_final = (__ram_load_addr + SIZEOF (RAM_DATA));
-    ASSERT(__etext_final <= ORIGIN(xip_memory) + LENGTH(xip_memory), "code memory overflow")
+    .kernel_mark :
+    {
+      . = ALIGN(32);
+      LONG(0x5746504C); /* LPFW */
+      . = ALIGN(32);
+      PROVIDE( __mark_start = . );
+      ASSERT(((ABSOLUTE(__mark_start) & 0x1F) == 0), "Kernel not aligned 32!");
+    } > xip_memory
 
     .bss (NOLOAD) :
     {
@@ -232,4 +234,3 @@ SECTIONS
     ASSERT(__HeapLimit - __HeapBase >= HeapMinSize, "heap region overflow")
 
 }
-

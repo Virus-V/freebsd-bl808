@@ -83,7 +83,7 @@ endif
 
 build:Makefile
 	$(CMAKE_DIR)/cmake -S . -B build -G "Unix Makefiles" $(cmake_definition)
-	cd build && make -j$(nproc)
+	cd build && $(MAKE) -j$(nproc)
 
 help:
 	@echo "Welcome to MCU SDK cmake build system,commands are as follows:"
@@ -104,4 +104,3 @@ clean:
 	$(RM) build
 
 .PHONY:build clean download format help
-

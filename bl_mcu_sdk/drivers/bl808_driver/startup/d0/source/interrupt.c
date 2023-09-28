@@ -33,7 +33,7 @@ static uintptr_t exception_handler_default(uintptr_t cause, uintptr_t val, uintp
                                                      (regs[REG_INT_CTX_NDX] >> 13) & 0x3,
                                                      (regs[REG_INT_CTX_NDX] >> 11) & 0x3,
                                                      (regs[REG_INT_CTX_NDX] >> 7) & 1);
-    MSG("mcause: %d, mtval = 0x%16llx, mepc = 0x%16llx\n\r\n\r", (cause & 0xf), val, regs[REG_EPC_NDX]);
+    MSG("mcause: %d, mtval = 0x%lx, mepc = 0x%lx\n\r\n\r", (cause & 0xf), (uint32_t)val, (uint32_t)regs[REG_EPC_NDX]);
 #ifdef DUMP_MCAUSE_INFO
 const char *mcause_str[] = {
     "Instruction address misaligned",
