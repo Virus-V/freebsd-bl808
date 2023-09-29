@@ -38,6 +38,8 @@ After the burning is completed, reset the board and you can see the following lo
 2. Enable net80211 wireless protocol stack (experimental)
 3. Porting the LVGL graphics library.
 4. Port rpmsg-lite to kernel and design rpmsg-lite bus driver. (Establish communication with RTOS core)
+5. Bring up BLE and Zigbee.
+6. Porting WebRTC and OpenThread.
 
 # License
 BSD-3-Clause license 
