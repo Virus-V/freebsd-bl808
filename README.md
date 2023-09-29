@@ -1,6 +1,9 @@
 # FreeBSD IoT Project
 The FreeBSD IoT Project is a research project that hopes to provide a business-friendly IoT standard solution based on FreeBSD's ultimate stability, security and complete ecology.
 
+# Supported Boards
+- [Sipeed M1s Dock](https://wiki.sipeed.com/hardware/zh/maix/m1s/m1s_dock.html)
+
 ## Environment setup
 Currently **ONLY** FreeBSD environment is supported. You can use software such as Virtual Box to install FreeBSD 13.2 or higher.
 
