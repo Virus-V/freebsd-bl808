@@ -4,7 +4,8 @@ The FreeBSD IoT Project is a research project that hopes to provide a business-f
 # Supported Boards
 - [Sipeed M1s Dock](https://wiki.sipeed.com/hardware/zh/maix/m1s/m1s_dock.html)
 
-## Environment setup
+## Quick Start
+### Environment setup
 Currently **ONLY** FreeBSD environment is supported. You can use software such as Virtual Box to install FreeBSD 13.2 or higher.
 
 ```
@@ -12,7 +13,7 @@ Currently **ONLY** FreeBSD environment is supported. You can use software such a
 # pkg install git gmake liblz4 u-boot-tools riscv64-none-elf-gcc cmake ninja
 # git clone --recursive git@github.com:Virus-V/freebsd-bl808.git
 # cd freebsd-bl808
-# make
+# gmake
 ```
 *NOTE*: **FreeBSD requires root permissions to deploy rootfs, so the build process needs to be carried out with root permissions.**
 
@@ -28,10 +29,10 @@ out
 ### Build Customer Applications
 The custom Application is located in the `apps` directory, and you can build it through the make tool. For example:
 ```bash
-make apps/helloworld/install # build and deploy helloworld app
-make apps/bsdinfo/install # build and deploy bsdinfo app
+gmake apps/helloworld/install # build and deploy helloworld app
+gmake apps/bsdinfo/install # build and deploy bsdinfo app
 
-make #Repackage images
+gmake #Repackage images
 ```
 
 ## Download Firmware
@@ -49,8 +50,7 @@ After the burning is completed, reset the board and you can see the following lo
 2. Enable net80211 wireless protocol stack (experimental)
 3. Porting the LVGL graphics library.
 4. Port rpmsg-lite to kernel and design rpmsg-lite bus driver. (Establish communication with RTOS core)
-5. Bring up BLE and Zigbee.
-6. Porting WebRTC and Matter.
+5. Porting Matter - try my best ;)
 
 # License
 BSD-3-Clause license
