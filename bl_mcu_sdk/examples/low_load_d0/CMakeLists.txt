@@ -14,7 +14,5 @@ set(TARGET_REQUIRED_SRCS rv32i_xtheade_lz4.S md5.c
 )
 
 set(mains main.c)
-if(${CPU_ID} STREQUAL "d0" )
-    set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/bl808_flash_d0.ld)
-endif()
+set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/bl808_flash_d0.ld)
 generate_bin()

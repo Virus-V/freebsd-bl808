@@ -82,8 +82,8 @@ cmake_definition+= -DCONFIG_TOOLCHAIN=$(CROSS_COMPILE)
 endif
 
 build:Makefile
-	$(CMAKE_DIR)/cmake -S . -B build -G "Unix Makefiles" $(cmake_definition)
-	cd build && $(MAKE) -j$(nproc)
+	$(CMAKE_DIR)/cmake -S . -B build_$(APP) -G "Ninja" $(cmake_definition)
+	cd build_$(APP) && ninja
 
 help:
 	@echo "Welcome to MCU SDK cmake build system,commands are as follows:"
@@ -103,4 +103,4 @@ clean:
 	$(RM) out
 	$(RM) build
 
-.PHONY:build clean download format help
+.PHONY:clean download format help

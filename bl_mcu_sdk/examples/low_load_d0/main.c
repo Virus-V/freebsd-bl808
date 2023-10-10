@@ -107,7 +107,6 @@ const pmp_config_entry_t pmp_entry_tab[8] = {
 
 #endif
 
-#ifdef CPU_D0
 /* return loaded addr */
 uint32_t fit_img_copy_node(void *fit, const char *name) {
   int offset, len;
@@ -194,7 +193,6 @@ extern void unlz4(const void *aSource, void *aDestination, uint32_t FileLen);
 
   return load_addr;
 }
-#endif
 
 #define MUST(x,msg) \
   if (!(x)) { \
@@ -204,31 +202,7 @@ extern void unlz4(const void *aSource, void *aDestination, uint32_t FileLen);
 
 int main(void) {
   bflb_platform_init(0);
-#ifdef CPU_M0
-  MSG("E907 start...\r\n");
-  mtimer_init();
-  MSG("mtimer clk:%d\r\n", CPU_Get_MTimer_Clock());
 
-  MSG("psram clk init ok!\r\n");
-  // MSG("m0 main! size_t:%d\r\n", sizeof(size_t));
-
-  csi_dcache_disable();
-#ifdef DUALCORE
-  BL_WR_WORD(IPC_SYNC_ADDR1, IPC_SYNC_FLAG);
-  BL_WR_WORD(IPC_SYNC_ADDR2, IPC_SYNC_FLAG);
-  L1C_DCache_Clean_By_Addr(IPC_SYNC_ADDR1, 8);
-#endif
-  while (1) {
-#ifdef __riscv_muldiv
-    int dummy;
-    /* In lieu of a halt instruction, induce a long-latency stall. */
-    __asm__ __volatile__("div %0, %0, zero" : "=r"(dummy));
-#endif
-  }
-
-#endif
-
-#ifdef CPU_D0
   // #define GLB_AHB_CLOCK_LZ4 (0x0008000000000000UL)
 
   MSG("C906 start...\r\n");
@@ -339,7 +313,6 @@ int main(void) {
   // *(volatile unsigned int *)0x2000f814 = 0x14476c20;
 
   opensbi_entry(0, fdt_addr);
-#endif
 
   while (1) {
 #ifdef __riscv_muldiv

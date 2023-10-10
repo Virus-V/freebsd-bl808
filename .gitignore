@@ -53,5 +53,12 @@ Mkfile.old
 dkms.conf
 opensbi/install
 opensbi/build
-bl_mcu_sdk/build
+bl_mcu_sdk/build_*
 bl_mcu_sdk/out
+out/*.bin
+compile_commands.json
+overlay
+
+#apps
+apps/bsdinfo/bsdinfo
+apps/helloworld/helloworld
