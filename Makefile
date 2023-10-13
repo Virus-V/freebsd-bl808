@@ -1,7 +1,8 @@
 PWD:=$(shell pwd)
 BOARD=Sipeed-M1s
+DEFAULT_APPS=bsdinfo helloworld
 
-all:
+all: crochet/work/env.sh $(addsuffix /install, $(addprefix apps/,$(DEFAULT_APPS)))
 	@./crochet/crochet.sh -b $(BOARD)
 
 INSTALL_LIBS_PATH:=$(PWD)/overlay/usr/local/lib

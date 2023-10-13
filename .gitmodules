@@ -7,3 +7,6 @@
 [submodule "bl_mcu_sdk/toolchain"]
 	path = bl_mcu_sdk/toolchain
 	url = git@github.com:Virus-V/t-head-xuantie-gcc-freebsd.git
+[submodule "apps/coremark/coremark"]
+	path = apps/coremark/coremark
+	url = https://github.com/eembc/coremark.git

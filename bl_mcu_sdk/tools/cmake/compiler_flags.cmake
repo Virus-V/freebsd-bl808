@@ -1,9 +1,9 @@
-list(APPEND GLOBAL_C_FLAGS -fno-jump-tables -fno-common -fms-extensions -ffunction-sections -fdata-sections -fmessage-length=0)
+list(APPEND GLOBAL_C_FLAGS -fno-jump-tables -fno-common -fno-ms-extensions -ffunction-sections -fdata-sections)
 list(APPEND GLOBAL_C_FLAGS -Wall -Wchar-subscripts -Wformat -Wundef -Wuninitialized -Winit-self -Wignored-qualifiers)
 list(APPEND GLOBAL_C_FLAGS -Wno-implicit-fallthrough -Wno-error=empty-body -Wno-error=unused-function -Wno-error=unused-but-set-variable)
 list(APPEND GLOBAL_C_FLAGS -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wno-error=absolute-value -Wno-error=type-limits -Wno-error=cpp -Wextra -Wno-unused-parameter -Wno-sign-compare)
-list(APPEND GLOBAL_C_FLAGS -Wno-error=implicit-function-declaration)
-list(APPEND GLOBAL_C_FLAGS -MMD)
+list(APPEND GLOBAL_C_FLAGS -Wno-error=implicit-function-declaration -Wno-error=format)
+list(APPEND GLOBAL_C_FLAGS -MMD -save-temps -fno-builtin)
 
 if(CONFIG_ROMAPI)
 list(APPEND GLOBAL_C_FLAGS -fshort-enums -fstrict-volatile-bitfields)
@@ -25,7 +25,7 @@ $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
 $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>)
 
 list(APPEND GLOBAL_LD_FLAGS -Wl,--cref -Wl,--gc-sections -nostartfiles -g3)
-list(APPEND GLOBAL_LD_FLAGS -fms-extensions -ffunction-sections -fdata-sections)
+list(APPEND GLOBAL_LD_FLAGS -ffunction-sections -fdata-sections)
 list(APPEND GLOBAL_LD_FLAGS --specs=nano.specs)
 
 
@@ -57,5 +57,3 @@ list(APPEND GLOBAL_C_FLAGS $<$<COMPILE_LANGUAGE:C>:-Werror>)
 list(APPEND GLOBAL_C_FLAGS -DCONFIG_BUILD_TYPE=0)
 endif()
 endif()
-
-

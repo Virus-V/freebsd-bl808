@@ -207,10 +207,11 @@ void bflb_platform_printf(char *fmt, ...)
     struct device *uart;
     char print_buf[128];
     va_list ap;
+    int ret;
 
     if (!uart_dbg_disable) {
         va_start(ap, fmt);
-        vsnprintf(print_buf, sizeof(print_buf) - 1, fmt, ap);
+        ret = vsnprintf(print_buf, sizeof(print_buf), fmt, ap);
         va_end(ap);
 #if ((defined BOOTROM) || (defined BFLB_EFLASH_LOADER))
         uint32_t len = strlen(print_buf);
@@ -220,7 +221,8 @@ void bflb_platform_printf(char *fmt, ...)
         }
 #endif
         uart = device_find("debug_log");
-        device_write(uart, 0, (uint8_t *)print_buf, strlen(print_buf));
+        if (ret > 0)
+          device_write(uart, 0, (uint8_t *)print_buf, ret);
         // UART_SendData(3, (uint8_t *)print_buf, strlen(print_buf));
     }
 }
