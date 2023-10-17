@@ -26,11 +26,11 @@ apps/%: crochet/work/env.sh FORCE
 	eval "env $$(cat crochet/work/env.sh) PATH=$(PATH) $(MAKE) -C apps/$${app}"
 
 clean:
-	chflags -R noschg crochet/work
-	rm -rf crochet/work
-	rm -rf opensbi/build opensbi/install
-	rm -rf bl_mcu_sdk/build_* bl_mcu_sdk/out
-	rm -rf out
+	-chflags -R noschg crochet/work
+	-rm -rf crochet/work
+	-rm -rf opensbi/build opensbi/install
+	-gmake -C bouffalo_sdk/examples/freebsd_loader clean
+	-rm -rf out
 
 FORCE:
 
