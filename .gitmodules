@@ -4,9 +4,9 @@
 [submodule "crochet"]
 	path = crochet
 	url = git@github.com:Virus-V/crochet.git
-[submodule "bl_mcu_sdk/toolchain"]
-	path = bl_mcu_sdk/toolchain
-	url = git@github.com:Virus-V/t-head-xuantie-gcc-freebsd.git
 [submodule "apps/coremark/coremark"]
 	path = apps/coremark/coremark
 	url = https://github.com/eembc/coremark.git
+[submodule "bouffalo_sdk"]
+	path = bouffalo_sdk
+	url = git@github.com:Virus-V/bouffalo_sdk.git
