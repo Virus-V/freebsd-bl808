@@ -10,3 +10,6 @@
 [submodule "bouffalo_sdk"]
 	path = bouffalo_sdk
 	url = git@github.com:Virus-V/bouffalo_sdk.git
+[submodule "prebuilts/t-head-xuantie-gcc-freebsd"]
+	path = prebuilts/t-head-xuantie-gcc-freebsd
+	url = https://github.com/Virus-V/t-head-xuantie-gcc-freebsd.git
