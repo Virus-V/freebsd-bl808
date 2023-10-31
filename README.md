@@ -159,10 +159,10 @@ random: unblocking device.
 
 # TODOs
 1. Adapt to the native serial port driver instead of using the functions provided by OpenSBI.
-2. Enable net80211 wireless protocol stack (experimental)
-3. Porting the LVGL graphics library.
-4. Port rpmsg-lite to kernel and design rpmsg-lite bus driver. (Establish communication with RTOS core)
-5. Porting Matter - try my best ;)
+2. Port rpmsg-lite to kernel and design rpmsg-lite bus driver. (Establish communication with RTOS core)
+3. Enable net80211 wireless protocol stack (experimental)
+4. Porting Matter.
+5. Porting the LVGL graphics library and other peripherals.
 
 # License
 BSD-3-Clause license
