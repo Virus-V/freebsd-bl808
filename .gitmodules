@@ -1,15 +1,15 @@
 [submodule "freebsd/src"]
 	path = freebsd/src
-	url = git@github.com:Virus-V/freebsd-src.git
+	url = ../freebsd-src.git
 [submodule "crochet"]
 	path = crochet
-	url = git@github.com:Virus-V/crochet.git
+	url = ../crochet.git
 [submodule "apps/coremark/coremark"]
 	path = apps/coremark/coremark
 	url = https://github.com/eembc/coremark.git
 [submodule "bouffalo_sdk"]
 	path = bouffalo_sdk
-	url = git@github.com:Virus-V/bouffalo_sdk.git
+	url = ../bouffalo_sdk.git
 [submodule "prebuilts/t-head-xuantie-gcc-freebsd"]
 	path = prebuilts/t-head-xuantie-gcc-freebsd
-	url = https://github.com/Virus-V/t-head-xuantie-gcc-freebsd.git
+	url = ../t-head-xuantie-gcc-freebsd.git
