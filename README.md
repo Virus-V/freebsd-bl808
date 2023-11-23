@@ -159,10 +159,11 @@ random: unblocking device.
 
 # TODOs
 1. Adapt to the native serial port driver instead of using the functions provided by OpenSBI.
-2. Port rpmsg-lite to kernel and design rpmsg-lite bus driver. (Establish communication with RTOS core)
-3. Enable net80211 wireless protocol stack (experimental)
+2. Port rpmsg-lite to kernel. (Establish communication with RTOS core) (Done)
+3. Enable net80211 wireless protocol stack.
 4. Porting Matter.
 5. Porting the LVGL graphics library and other peripherals.
+6. Design rpmsg-lite bus driver, the rpmsg-lite bus driver is designed as a common component of the system to allow E907 to better provide services to C906.
 
 # License
 BSD-3-Clause license
